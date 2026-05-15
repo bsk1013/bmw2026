@@ -1,4 +1,4 @@
-BMW PWA v6 big icon package
+ㄷBMW PWA v6 big icon package
 
 이번 버전의 핵심:
 - 홈화면 아이콘과 Android 기본 스플래시가 같은 manifest 아이콘을 쓰는 문제를 인정하고, 둘 다 큰 BI 아이콘으로 통일
