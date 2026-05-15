@@ -1,7 +1,13 @@
-BMW Official PWA Injected Package
+BMW Official PWA Package - Large BI Logo
+
+수정 내용:
+- 홈화면 아이콘 BI 로고 확대
+- 앱 실행 스플래시용 maskable 아이콘 확대
+- BI 로고 크롭 후 아이콘 재생성
+- service worker cache name 변경: bmw-pwa-large-bi-v2
 
 기준 HTML:
-- 사용자가 업로드한 index.html
+- 업로드된 index.html
 
 앱 이름:
 - BMW
@@ -15,11 +21,10 @@ BMW Official PWA Injected Package
 - service-worker.js
 - icons 폴더 전체
 
-아이콘:
-- 사용자가 제공한 BI logo base64 기준
-- 원본 크기: 158 x 160
-- 원본 파일: icons/bi-logo-original.png
+BI 로고:
+- 원본: 158 x 160
+- 크롭 후: 165 x 167
 
-주의:
-- 기존 GitHub Pages bmw2026 경로의 파일들과 교체 업로드하세요.
-- service-worker 캐시가 남으면 앱 재실행 또는 새로고침 후 반영됩니다.
+중요:
+- 기존 홈화면 아이콘은 캐시될 수 있으므로, 삭제 후 다시 홈화면 추가해야 새 아이콘이 확실히 반영됩니다.
+- Android/Chrome은 service worker 캐시도 있으므로 앱 재실행 또는 사이트 데이터 삭제가 필요할 수 있습니다.
