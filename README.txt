@@ -34,3 +34,14 @@ CUSTOM INTRO SPLASH:
 - 좌→우 빛 스윕 애니메이션
 - 로딩바 없음
 - 약 2초 후 본 화면 전환
+
+XL HOME ICON REVISION:
+- 홈화면/Apple touch icon용 BI 로고 초대형 버전
+- 180/192 아이콘 로고 점유율 약 128%
+- 512 일반 아이콘 로고 점유율 약 118%
+- maskable 아이콘은 잘림 방지를 위해 약 102%
+- 기존 홈화면 앱은 반드시 삭제 후 다시 추가 필요
+- Android/Chrome 캐시가 남으면 사이트 데이터 삭제 또는 새 URL 파라미터 접속 권장
+
+BI original: (158, 160)
+BI cropped: (157, 159)
