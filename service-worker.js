@@ -1,4 +1,4 @@
-const CACHE_NAME = 'bmw-pwa-large-bi-v2';
+const CACHE_NAME = 'bmw-pwa-intro-splash-v1';
 const APP_SHELL = [
   './',
   './index.html',

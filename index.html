@@ -6494,7 +6494,174 @@ document.addEventListener('DOMContentLoaded', function(){
 <link rel="icon" type="image/png" sizes="192x192" href="./icons/icon-192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="./icons/icon-512.png">
 
+
+<style id="bmw-custom-intro-splash-css">
+#bmwIntroSplash{
+  position:fixed;
+  inset:0;
+  z-index:2147483647;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 37%, rgba(75,150,255,.18), transparent 28%),
+    radial-gradient(circle at 50% 55%, rgba(0,180,255,.10), transparent 34%),
+    linear-gradient(180deg,#050b16 0%,#091426 48%,#050914 100%);
+  overflow:hidden;
+  opacity:1;
+  transition:opacity .55s ease, visibility .55s ease;
+  visibility:visible;
+}
+#bmwIntroSplash.is-hide{
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+}
+#bmwIntroSplash::before{
+  content:"";
+  position:absolute;
+  inset:-25%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(120,190,255,.08), transparent 26%),
+    linear-gradient(115deg, transparent 0%, transparent 44%, rgba(87,190,255,.16) 50%, transparent 56%, transparent 100%);
+  transform:translateX(-120%);
+  animation:bmwIntroBeam 1.45s cubic-bezier(.2,.8,.2,1) .35s forwards;
+}
+#bmwIntroSplash::after{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  top:61%;
+  height:1px;
+  background:linear-gradient(90deg, transparent, rgba(50,170,255,.18), rgba(180,230,255,.58), rgba(50,170,255,.18), transparent);
+  filter:drop-shadow(0 0 12px rgba(58,180,255,.45));
+  transform:scaleX(0);
+  animation:bmwIntroLine 1.05s ease .6s forwards;
+}
+.bmw-intro-inner{
+  position:relative;
+  z-index:2;
+  width:min(92vw,720px);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  transform:translateY(-2vh);
+}
+.bmw-intro-logo{
+  width:min(34vw,180px);
+  height:min(34vw,180px);
+  border-radius:50%;
+  object-fit:contain;
+  filter:
+    drop-shadow(0 0 8px rgba(255,255,255,.35))
+    drop-shadow(0 0 18px rgba(65,170,255,.55))
+    drop-shadow(0 20px 28px rgba(0,0,0,.45));
+  transform:scale(.82);
+  opacity:0;
+  animation:bmwLogoReveal .72s ease .05s forwards, bmwLogoGlow 1.8s ease-in-out .55s infinite alternate;
+}
+.bmw-intro-title{
+  position:relative;
+  margin-top:22px;
+  font-size:clamp(38px, 10vw, 86px);
+  line-height:.95;
+  font-weight:900;
+  letter-spacing:-.075em;
+  font-style:italic;
+  color:transparent;
+  background:
+    linear-gradient(180deg,#ffffff 0%,#dceeff 24%,#75b7ff 52%,#e9f7ff 72%,#7a879a 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  text-shadow:
+    0 2px 0 rgba(255,255,255,.28),
+    0 8px 18px rgba(0,0,0,.65),
+    0 0 18px rgba(77,180,255,.25);
+  transform:translateY(12px) scale(.97);
+  opacity:0;
+  animation:bmwTitleReveal .72s ease .28s forwards;
+}
+.bmw-intro-title::before{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  transform:translate(3px,5px);
+  color:rgba(0,0,0,.56);
+  -webkit-text-stroke:1px rgba(255,255,255,.08);
+}
+.bmw-intro-title::after{
+  content:"";
+  position:absolute;
+  top:-18%;
+  bottom:-22%;
+  width:34%;
+  left:-46%;
+  background:linear-gradient(105deg, transparent 0%, rgba(255,255,255,.04) 22%, rgba(170,230,255,.92) 49%, rgba(70,180,255,.45) 60%, transparent 100%);
+  filter:blur(.2px) drop-shadow(0 0 14px rgba(75,190,255,.85));
+  transform:skewX(-18deg);
+  mix-blend-mode:screen;
+  animation:bmwTextSweep 1.25s cubic-bezier(.18,.86,.22,1) .72s forwards;
+}
+.bmw-intro-subglow{
+  margin-top:7px;
+  width:min(72vw,620px);
+  height:2px;
+  background:linear-gradient(90deg, transparent, rgba(47,165,255,.2), rgba(198,237,255,.85), rgba(47,165,255,.2), transparent);
+  transform:scaleX(0);
+  opacity:.95;
+  filter:drop-shadow(0 0 10px rgba(46,170,255,.65));
+  animation:bmwIntroLine 1.05s ease .84s forwards;
+}
+@keyframes bmwLogoReveal{
+  to{opacity:1;transform:scale(1);}
+}
+@keyframes bmwLogoGlow{
+  from{filter:drop-shadow(0 0 8px rgba(255,255,255,.28)) drop-shadow(0 0 18px rgba(65,170,255,.38)) drop-shadow(0 20px 28px rgba(0,0,0,.45));}
+  to{filter:drop-shadow(0 0 12px rgba(255,255,255,.45)) drop-shadow(0 0 28px rgba(65,185,255,.72)) drop-shadow(0 20px 28px rgba(0,0,0,.45));}
+}
+@keyframes bmwTitleReveal{
+  to{opacity:1;transform:translateY(0) scale(1);}
+}
+@keyframes bmwTextSweep{
+  0%{left:-46%;opacity:0;}
+  12%{opacity:1;}
+  82%{opacity:1;}
+  100%{left:112%;opacity:0;}
+}
+@keyframes bmwIntroBeam{
+  to{transform:translateX(120%);}
+}
+@keyframes bmwIntroLine{
+  to{transform:scaleX(1);}
+}
+@media (max-width:480px){
+  .bmw-intro-logo{width:128px;height:128px;}
+  .bmw-intro-title{font-size:48px;letter-spacing:-.085em;}
+  .bmw-intro-inner{transform:translateY(-4vh);}
+}
+@media (prefers-reduced-motion: reduce){
+  #bmwIntroSplash, #bmwIntroSplash::before, #bmwIntroSplash::after,
+  .bmw-intro-logo,.bmw-intro-title,.bmw-intro-title::after,.bmw-intro-subglow{
+    animation:none !important;
+    transition:none !important;
+  }
+  .bmw-intro-logo,.bmw-intro-title{opacity:1;transform:none;}
+}
+</style>
+
 </head><body>
+
+<div id="bmwIntroSplash" aria-hidden="true">
+  <div class="bmw-intro-inner">
+    <img class="bmw-intro-logo" src="./icons/bi-logo-original.png" alt="">
+    <div class="bmw-intro-title" data-text="BoMunWildcard">BoMunWildcard</div>
+    <div class="bmw-intro-subglow"></div>
+  </div>
+</div>
+
+
 <!-- APP SECTION: login lock screen -->
 <div class="lock" id="lock"><div class="lock-card"><div class="brand"><div class="logo" id="loginLogo" onclick="return goDashboardFromLogo(event)">BI</div><div><h2>BMW 재정 플랫폼</h2><div class="sub">BoMunWildcard · 보문고등학교30기</div></div></div><div style="margin-top:14px"><input id="pw" placeholder="비밀번호 입력" type="password"/></div><div class="actions" style="margin-top:12px"><button class="btn primary" id="loginBtn">접속</button></div></div></div>
 <!-- APP SECTION: main application shell -->
@@ -17084,5 +17251,37 @@ function goDashboardFromLogo(event){
         .catch(function(err){ console.warn('BMW PWA service worker registration failed:', err); });
     });
   }
+})();
+</script>
+
+<script id="bmw-custom-intro-splash-js">
+(function(){
+  var INTRO_KEY = 'bmwIntroLastShown';
+  var SHOW_EVERY_MS = 0; // 0 = 앱 열 때마다 표시. 하루 1회만 원하면 86400000.
+  function shouldShow(){
+    try{
+      if(SHOW_EVERY_MS === 0) return true;
+      var last = Number(sessionStorage.getItem(INTRO_KEY) || 0);
+      return Date.now() - last > SHOW_EVERY_MS;
+    }catch(e){ return true; }
+  }
+  function hideIntro(){
+    var el = document.getElementById('bmwIntroSplash');
+    if(!el) return;
+    el.classList.add('is-hide');
+    setTimeout(function(){
+      if(el && el.parentNode) el.parentNode.removeChild(el);
+    }, 700);
+  }
+  if(!shouldShow()){
+    var el = document.getElementById('bmwIntroSplash');
+    if(el && el.parentNode) el.parentNode.removeChild(el);
+    return;
+  }
+  try{ sessionStorage.setItem(INTRO_KEY, String(Date.now())); }catch(e){}
+  window.addEventListener('load', function(){
+    setTimeout(hideIntro, 2050);
+  });
+  setTimeout(hideIntro, 2600);
 })();
 </script>
